@@ -1,0 +1,23 @@
+language: ru
+
+models:
+  spacy: ru_core_news_lg
+  morph: pymorphy3
+
+segmentation: razdel
+
+normalize:
+  # Нормализация ё/е: если true, "е" в словах заменяется на "ё" там, где
+  # словарь pymorphy3 даёт лемму с "ё" (последовательно, детерминированно).
+  normalize_yo: false
+
+readability:
+  formula: oborneva   # заглушка до Фазы 4
+  target_fre: 60
+
+logging:
+  level: INFO
+  file: logs/ru_simplifier.log
+
+determinism:
+  seed: 0             # runtime-рандом запрещён инвариантом INV-4; поле — декларация

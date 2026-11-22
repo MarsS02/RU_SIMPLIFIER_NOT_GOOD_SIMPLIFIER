@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ru_simplifier"
+version = "0.1.0"
+description = "Детерминированный упрощатель русского текста: упрощаем ФОРМУ, никогда СОДЕРЖАНИЕ (Фазы 0-1: каркас + анализатор)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "razdel",
+    "pymorphy3",
+    "pymorphy3-dicts-ru",
+    "spacy",
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+ru-simplifier = "ru_simplifier.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+ru_simplifier = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
